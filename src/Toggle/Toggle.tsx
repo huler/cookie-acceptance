@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import "./Modal.scss";
+import "./Toggle.scss";
 
-const Modal = () => {
+const Toggle = () => {
   return <h1>Hello </h1>;
 };
 
-export default Modal;
+export default Toggle;
