@@ -1,0 +1,28 @@
+@import "../../../Styling/variables.scss";
+
+.#{$rootClass} {
+  &__modal {
+    background: #fff;
+    box-shadow: #000 10px 10px 10px;
+    width: 400px;
+    min-height: 400px;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    overflow: hidden;
+    border-radius: 10px;
+    font-family: "Sofia Pro", "SF Pro Text", -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial,
+      sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    line-height: 18px;
+    color: #000;
+    text-align: left;
+    &__inner {
+      padding: 20px;
+    }
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
