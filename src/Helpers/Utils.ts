@@ -1,17 +1,15 @@
 import { CookieTypes } from './Types';
 
 // Set a cookie
-export const setCookie = (name: string, value: string | boolean, expiry: number) => {
-    const d = new Date();
-    d.setTime(d.getTime() + (expiry * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+export const setCookie = (name: string, value: string) => {
+    localStorage.setItem(name, value);
 }
 
 // Store the relevant cookies 
-export const StoreCookies = (cookies: Array<CookieTypes>, appName: string) => {
+export const storeCookies = (cookies: Array<CookieTypes>, appName: string, callback: () => void) => {
     cookies.map((cookie) => {
-        setCookie(`${appName}_${cookie}`, true, 365);
+        setCookie(`${appName}_${cookie}`, 'true');
     });
-    setCookie('hasSetCookies', true, 365);
+    setCookie('hasSetCookies', 'true');
+    if (callback) callback();
 }

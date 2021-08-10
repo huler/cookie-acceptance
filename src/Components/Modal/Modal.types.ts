@@ -9,4 +9,5 @@ export interface ModalProps {
     onAccept: (() => void);
     cookies: Array<CookieTypes>;
     appName: string;
+    className: string;
 }
