@@ -25,17 +25,23 @@ const Button = styled(ButtonComponent)`
   cursor: pointer;
   -webkit-appearance: none;
   outline: none;
-  font-family: "sofia-pro";
   font-weight: 500;
   width: auto;
   border: none;
-  margin: 0 10px;
   text-decoration: none;
   position: relative;
   background: ${(props) =>
     props.type === "primary" ? "#f44336" : "transparent"};
   border: ${(props) =>
     props.type === "primary" ? "1px solid transparent" : "1px solid #f44336"};
+  color: ${(props) => (props.type === "primary" ? "#fff" : "#f44336")};
+  font-size: 13px;
+  padding: 10px 25px;
+  line-height: 20px;
+  font-family: "Sofia Pro", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+  margin-right: 10px;
 `;
 
 export default Button;

@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ModalProps } from "./Modal.types";
 import { storeCookies } from "../../Helpers/Utils";
 import Button from "../Button";
+import Type from "../Type";
+import { CookieTypes, AgreedCookieTypes } from "../../Helpers/Types";
 
 const ModalComponent = ({
   className,
@@ -16,7 +18,8 @@ const ModalComponent = ({
   appName,
 }: ModalProps) => {
   const [active, setActive] = useState(true);
-  const [expanded, setExpanded] = useState(false);
+  const [agreedCookies, setAgreedCookies] = useState<Object>({});
+  const [expanded, setExpanded] = useState(true);
 
   // Framer Motion animation data
   const animate = {
@@ -40,12 +43,30 @@ const ModalComponent = ({
   const initial = { opacity: 0, translateY: 100 };
 
   const ModalInner = styled.div`
-    padding: 20px;
+    padding: 30px;
   `;
   const ModalImg = styled.img`
     width: 100%;
     height: auto;
   `;
+  const ExpandedActions = styled.div`
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 1)
+    );
+    padding: 20px 0;
+  `;
+
+  const handleSingleCookieConsent = (
+    cookie: CookieTypes,
+    agreement: boolean
+  ) => {
+    setAgreedCookies({ ...agreedCookies, [cookie]: agreement });
+  };
 
   const initialContent = (
     <>
@@ -60,7 +81,7 @@ const ModalComponent = ({
         <Button
           type="secondary"
           click={() => setExpanded(true)}
-          text="Configure"
+          text="Cookie Settings"
         />
       </ModalInner>
     </>
@@ -68,7 +89,23 @@ const ModalComponent = ({
 
   const expandedContent = (
     <ModalInner>
+      <h2>Privacy Settings</h2>
       <p>{largeText || "Please accept our cookie policy"}</p>
+      {cookies.map((cookie, index) => (
+        <Type
+          cookie={cookie}
+          onToggle={handleSingleCookieConsent}
+          agreedCookies={agreedCookies}
+        />
+      ))}
+      <Type />
+      <ExpandedActions>
+        <Button
+          type="primary"
+          click={() => alert("store")}
+          text="Confirm Choices"
+        />
+      </ExpandedActions>
     </ModalInner>
   );
 
@@ -80,7 +117,7 @@ const ModalComponent = ({
             animate={animate}
             exit={exit}
             initial={initial}
-            className={className}
+            className={`${className} ${expanded && "expanded"}`}
           >
             {!expanded && initialContent}
             {expanded && expandedContent}
@@ -93,7 +130,7 @@ const ModalComponent = ({
 
 const Modal = styled(ModalComponent)`
   background: #fff;
-  box-shadow: #000 10px 10px 10px;
+  box-shadow: 0px 3px 6px #00000029;
   width: 400px;
   min-height: 400px;
   position: fixed;
@@ -105,9 +142,23 @@ const Modal = styled(ModalComponent)`
     Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
-  line-height: 18px;
-  color: #000;
+  line-height: 20px;
+  color: #363b40;
   text-align: left;
+  transition: 0.25s ease;
+  max-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &.expanded {
+    height: calc(100% - 60px);
+    top: 30px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #363b40;
+    margin-bottom: 40px;
+  }
 `;
 
 export default Modal;
