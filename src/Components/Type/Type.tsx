@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { CookieTypes, AgreedCookieTypes } from "../../Helpers/Types";
+import { CookieTypes } from "../../Helpers/Types";
 import Toggle from "../Toggle";
 interface TypeProps {
   cookie: CookieTypes;
   className?: string;
-  onToggle: (AgreedCookieTypes) => void;
-  agreedCookies: Array<AgreedCookieTypes>;
+  onToggle: (cookie: CookieTypes, agreement: boolean) => void;
+  agreedCookies: CookieTypes[];
 }
 
 const TypeComponent = ({
@@ -70,7 +70,7 @@ const TypeComponent = ({
           <Toggle
             onToggle={onToggle}
             cookie={cookie}
-            checked={agreedCookies[cookie]}
+            checked={agreedCookies.includes(cookie)}
           />
         ) : (
           <small>Always On</small>

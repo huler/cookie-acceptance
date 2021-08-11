@@ -5,7 +5,7 @@ import { ModalProps } from "./Modal.types";
 import { storeCookies } from "../../Helpers/Utils";
 import Button from "../Button";
 import Type from "../Type";
-import { CookieTypes, AgreedCookieTypes } from "../../Helpers/Types";
+import { CookieTypes } from "../../Helpers/Types";
 
 const ModalComponent = ({
   className,
@@ -18,8 +18,8 @@ const ModalComponent = ({
   appName,
 }: ModalProps) => {
   const [active, setActive] = useState(true);
-  const [agreedCookies, setAgreedCookies] = useState<Object>({});
-  const [expanded, setExpanded] = useState(true);
+  const [agreedCookies, setAgreedCookies] = useState<CookieTypes[]>([]);
+  const [expanded, setExpanded] = useState(false);
 
   // Framer Motion animation data
   const animate = {
@@ -65,7 +65,21 @@ const ModalComponent = ({
     cookie: CookieTypes,
     agreement: boolean
   ) => {
-    setAgreedCookies({ ...agreedCookies, [cookie]: agreement });
+    if (agreement) {
+      setAgreedCookies([...agreedCookies, cookie]);
+    } else {
+      setAgreedCookies(agreedCookies.filter((item) => item !== cookie));
+    }
+  };
+
+  const handleConfirm = (all?: boolean) => {
+    // Agree to all cookies provided
+    if (all) {
+      storeCookies(cookies, appName, onAccept);
+      return;
+    }
+    // Agree to specific cookies
+    storeCookies(agreedCookies, appName, onAccept);
   };
 
   const initialContent = (
@@ -75,7 +89,7 @@ const ModalComponent = ({
         <p>{smallText || "Please accept our cookie policy"}</p>
         <Button
           type="primary"
-          click={() => storeCookies(cookies, appName, onAccept)}
+          click={() => handleConfirm(true)}
           text="Accept All Cookies"
         />
         <Button
@@ -102,9 +116,10 @@ const ModalComponent = ({
       <ExpandedActions>
         <Button
           type="primary"
-          click={() => alert("store")}
+          click={() => handleConfirm()}
           text="Confirm Choices"
         />
+        <Button type="primary" click={() => setExpanded(false)} text="Close" />
       </ExpandedActions>
     </ModalInner>
   );
@@ -119,8 +134,7 @@ const ModalComponent = ({
             initial={initial}
             className={`${className} ${expanded && "expanded"}`}
           >
-            {!expanded && initialContent}
-            {expanded && expandedContent}
+            {expanded ? expandedContent : initialContent}
           </motion.div>
         )}
       </AnimatePresence>

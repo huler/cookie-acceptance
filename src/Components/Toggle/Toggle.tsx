@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { AgreedCookieTypes, CookieTypes } from "../../Helpers/Types";
+import { CookieTypes } from "../../Helpers/Types";
 
 interface ToggleProps {
   className?: string;
