@@ -1,3 +1,3 @@
-import Modal from "./Components/Modal";
+import CookieAcceptance from "./Components/CookieAcceptance";
 
-export default Modal;
+export { CookieAcceptance };

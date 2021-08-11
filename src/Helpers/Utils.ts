@@ -1,14 +1,15 @@
-// Set a cookie
-export const setCookie = (name: string, value: string) => {
-    localStorage.setItem(name, value);
-}
+import { CookieTypes } from "./Types";
 
 // Store the relevant cookies 
-export const storeCookies = (cookies: Object, appName: string, callback: () => void) => {
-    Object.keys(cookies).map((cookie) => {
-        console.log(cookies[cookie]);
-        setCookie(`${appName}_${cookies[cookie]}`, 'true');
+export const storeCookies = (cookies: CookieTypes[], agreedCookies: CookieTypes[], appName: string, callback: () => void) => {
+    cookies.map((cookie) => {
+        if (agreedCookies.includes(cookie)) {
+            localStorage.setItem(`${appName}_${cookie}`, cookie);
+        } else {
+            localStorage.removeItem(`${appName}_${cookie}`);
+        }
     });
-    setCookie('hasSetCookies', 'true');
+    localStorage.setItem('ReactCookieAcceptance_hasSetCookies', 'true');
+
     if (callback) callback();
 }

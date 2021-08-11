@@ -13,13 +13,13 @@ export default {
     {
       file: packageJson.main,
       format: "cjs",
-      sourcemap: true
+      sourcemap: true,
     },
     {
       file: packageJson.module,
       format: "esm",
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
   ],
   plugins: [
     peerDepsExternal(),
@@ -32,14 +32,14 @@ export default {
         {
           src: "src/variables.scss",
           dest: "build",
-          rename: "variables.scss"
+          rename: "variables.scss",
         },
         {
           src: "src/typography.scss",
           dest: "build",
-          rename: "typography.scss"
-        }
-      ]
-    })
-  ]
+          rename: "typography.scss",
+        },
+      ],
+    }),
+  ],
 };

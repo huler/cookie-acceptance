@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { ModalProps } from "./Modal.types";
 import { storeCookies } from "../../Helpers/Utils";
 import Button from "../Button";
 import Type from "../Type";
+import { BaseContext } from "../../Context/BaseContext";
 import { CookieTypes } from "../../Helpers/Types";
+
+export interface ModalProps {
+  smallText: string;
+  largeText;
+  string;
+  privacyPolicyURL: string;
+  image?: string;
+  onAccept: () => void;
+  cookies: Array<CookieTypes>;
+  appName: string;
+  className: string;
+  toggleCookiePopup: () => void;
+}
 
 const ModalComponent = ({
   className,
@@ -17,9 +30,14 @@ const ModalComponent = ({
   cookies,
   appName,
 }: ModalProps) => {
-  const [active, setActive] = useState(true);
-  const [agreedCookies, setAgreedCookies] = useState<CookieTypes[]>([]);
-  const [expanded, setExpanded] = useState(false);
+  const {
+    visible,
+    expanded,
+    agreedCookies,
+    setVisible,
+    setExpanded,
+    setAgreedCookies,
+  } = useContext(BaseContext);
 
   // Framer Motion animation data
   const animate = {
@@ -75,11 +93,42 @@ const ModalComponent = ({
   const handleConfirm = (all?: boolean) => {
     // Agree to all cookies provided
     if (all) {
-      storeCookies(cookies, appName, onAccept);
-      return;
+      setAgreedCookies(cookies);
+      storeCookies(cookies, cookies, appName, onAccept);
+    } else {
+      // Agree to specific cookies
+      storeCookies(cookies, agreedCookies, appName, onAccept);
     }
-    // Agree to specific cookies
-    storeCookies(agreedCookies, appName, onAccept);
+    setVisible(false);
+  };
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("ReactCookieAcceptance_hasSetCookies") !== "true"
+    ) {
+      setVisible(true);
+    }
+    const agreed = [];
+    cookies &&
+      cookies.map((cookie) => {
+        const storedCookie = localStorage.getItem(`${appName}_${cookie}`);
+        console.log(storedCookie);
+        if (storedCookie) {
+          agreed.push(cookie);
+        }
+      });
+    setAgreedCookies(agreed);
+  }, []);
+
+  const handleCloseSettings = () => {
+    if (
+      localStorage.getItem("ReactCookieAcceptance_hasSetCookies") === "true"
+    ) {
+      setVisible(false);
+      setExpanded(false);
+    } else {
+      setExpanded(false);
+    }
   };
 
   const initialContent = (
@@ -105,13 +154,10 @@ const ModalComponent = ({
     <ModalInner>
       <h2>Privacy Settings</h2>
       <p>{largeText || "Please accept our cookie policy"}</p>
-      {cookies.map((cookie, index) => (
-        <Type
-          cookie={cookie}
-          onToggle={handleSingleCookieConsent}
-          agreedCookies={agreedCookies}
-        />
-      ))}
+      {cookies &&
+        cookies.map((cookie, index) => (
+          <Type cookie={cookie} onToggle={handleSingleCookieConsent} />
+        ))}
       <Type />
       <ExpandedActions>
         <Button
@@ -119,7 +165,11 @@ const ModalComponent = ({
           click={() => handleConfirm()}
           text="Confirm Choices"
         />
-        <Button type="primary" click={() => setExpanded(false)} text="Close" />
+        <Button
+          type="secondary"
+          click={() => handleCloseSettings()}
+          text="Close"
+        />
       </ExpandedActions>
     </ModalInner>
   );
@@ -127,7 +177,7 @@ const ModalComponent = ({
   return (
     <>
       <AnimatePresence>
-        {active && (
+        {visible ? (
           <motion.div
             animate={animate}
             exit={exit}
@@ -136,6 +186,15 @@ const ModalComponent = ({
           >
             {expanded ? expandedContent : initialContent}
           </motion.div>
+        ) : (
+          <p
+            onClick={() => {
+              setVisible(true);
+              setExpanded(true);
+            }}
+          >
+            Cookie Settings
+          </p>
         )}
       </AnimatePresence>
     </>

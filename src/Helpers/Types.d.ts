@@ -1,1 +1,1 @@
-export type CookieTypes = 'performance' | 'functional' | 'targeting';
+export type CookieTypes = 'performance' | 'functional' | 'targeting' | string;

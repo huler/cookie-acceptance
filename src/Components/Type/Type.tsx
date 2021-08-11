@@ -1,21 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 import { CookieTypes } from "../../Helpers/Types";
+import { BaseContext } from "../../Context/BaseContext";
 import Toggle from "../Toggle";
 interface TypeProps {
   cookie: CookieTypes;
   className?: string;
   onToggle: (cookie: CookieTypes, agreement: boolean) => void;
-  agreedCookies: CookieTypes[];
 }
 
-const TypeComponent = ({
-  cookie,
-  className,
-  onToggle,
-  agreedCookies,
-}: TypeProps) => {
+const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
+  const { agreedCookies } = useContext(BaseContext);
+
   const getCookieDescription = (type) => {
     switch (type) {
       case "performance":
