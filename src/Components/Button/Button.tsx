@@ -1,14 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import { string } from "yargs";
-
-export interface ButtonProps {
-  text: string;
-  click: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  type: string;
-  className: string;
-}
+import { ButtonProps } from "./Button.types";
 
 const ButtonComponent = ({ text, click, type, className }: ButtonProps) => {
   return (

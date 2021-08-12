@@ -1,14 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import { CookieTypes } from "../../Helpers/Types";
-
-interface ToggleProps {
-  className?: string;
-  onToggle: (cookie: CookieTypes, agreement: boolean) => void;
-  checked: boolean;
-  cookie: CookieTypes;
-}
+import { ToggleProps } from "./Toggle.types";
 
 const ToggleComponent = ({
   className,

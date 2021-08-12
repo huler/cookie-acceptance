@@ -6,21 +6,10 @@ import Button from "../Button";
 import Type from "../Type";
 import { BaseContext } from "../../Context/BaseContext";
 import { CookieTypes } from "../../Helpers/Types";
+import { ModalInner, ModalImg, ExpandedActions } from "./Styled";
+import { CookieAcceptanceProps } from "./CookieAcceptance.types";
 
-export interface ModalProps {
-  smallText: string;
-  largeText;
-  string;
-  privacyPolicyURL: string;
-  image?: string;
-  onAccept: () => void;
-  cookies: Array<CookieTypes>;
-  appName: string;
-  className: string;
-  toggleCookiePopup: () => void;
-}
-
-const ModalComponent = ({
+const CookieAcceptance = ({
   className,
   smallText,
   largeText,
@@ -29,7 +18,7 @@ const ModalComponent = ({
   onAccept,
   cookies,
   appName,
-}: ModalProps) => {
+}: CookieAcceptanceProps) => {
   const {
     visible,
     expanded,
@@ -59,25 +48,6 @@ const ModalComponent = ({
     },
   };
   const initial = { opacity: 0, translateY: 100 };
-
-  const ModalInner = styled.div`
-    padding: 30px;
-  `;
-  const ModalImg = styled.img`
-    width: 100%;
-    height: auto;
-  `;
-  const ExpandedActions = styled.div`
-    position: sticky;
-    bottom: 0;
-    width: 100%;
-    background: linear-gradient(
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 1),
-      rgba(255, 255, 255, 1)
-    );
-    padding: 20px 0;
-  `;
 
   const handleSingleCookieConsent = (
     cookie: CookieTypes,
@@ -131,11 +101,23 @@ const ModalComponent = ({
     }
   };
 
+  const privacyPolicyLink = (
+    <>
+      {privacyPolicyURL && (
+        <a href={privacyPolicyURL} target="_blank" rel="noreferrer">
+          More Info
+        </a>
+      )}
+    </>
+  );
+
   const initialContent = (
     <>
       {image && <ModalImg src={image} alt="Cookie Policy" />}
       <ModalInner>
-        <p>{smallText || "Please accept our cookie policy"}</p>
+        <p>
+          {smallText || "Please accept our cookie policy"} {privacyPolicyLink}
+        </p>
         <Button
           type="primary"
           click={() => handleConfirm(true)}
@@ -153,7 +135,9 @@ const ModalComponent = ({
   const expandedContent = (
     <ModalInner>
       <h2>Privacy Settings</h2>
-      <p>{largeText || "Please accept our cookie policy"}</p>
+      <p>
+        {largeText || "Please accept our cookie policy"} {privacyPolicyLink}
+      </p>
       {cookies &&
         cookies.map((cookie, index) => (
           <Type cookie={cookie} onToggle={handleSingleCookieConsent} />
@@ -201,7 +185,7 @@ const ModalComponent = ({
   );
 };
 
-const Modal = styled(ModalComponent)`
+const StyledCookieAcceptance = styled(CookieAcceptance)`
   background: #fff;
   box-shadow: 0px 3px 6px #00000029;
   width: 400px;
@@ -231,7 +215,13 @@ const Modal = styled(ModalComponent)`
     line-height: 20px;
     color: #363b40;
     margin-bottom: 40px;
+    a {
+      display: inline-block;
+      width: 100%;
+      margin-top: 15px;
+      color: #f44336;
+    }
   }
 `;
 
-export default Modal;
+export default StyledCookieAcceptance;

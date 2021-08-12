@@ -3,11 +3,7 @@ import styled from "styled-components";
 import { CookieTypes } from "../../Helpers/Types";
 import { BaseContext } from "../../Context/BaseContext";
 import Toggle from "../Toggle";
-interface TypeProps {
-  cookie: CookieTypes;
-  className?: string;
-  onToggle: (cookie: CookieTypes, agreement: boolean) => void;
-}
+import { TypeProps } from "./Type.types";
 
 const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
   const { agreedCookies } = useContext(BaseContext);
