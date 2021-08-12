@@ -14,7 +14,6 @@
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c --watch",
-    "test": "jest",
     "test:watch": "jest --watch",
     "generate": "node ./util/create-component",
     "prepublishOnly": "npm run build"
@@ -25,11 +24,9 @@
   },
   "keywords": [
     "React",
-    "Component",
-    "Library",
-    "Rollup",
-    "Typescript",
-    "Sass"
+    "Cookie Policy",
+    "GDPR",
+    "Typescript"
   ],
   "author": "MyCleverGroup",
   "license": "UNLICENSED",
@@ -45,26 +42,18 @@
     "@babel/core": "^7.12.10",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.1",
-    "@storybook/react": "^6.1.12",
-    "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^11.2.3",
-    "@types/jest": "^24.0.24",
     "@types/react": "^16.9.12",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^10.0.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.6.3",
     "node-sass": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.36.1",
-    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-peer-deps-external": "^2.2.0",
-    "rollup-plugin-postcss": "^3.1.2",
     "rollup-plugin-typescript2": "^0.29.0",
-    "sass-loader": "^10.1.1",
-    "ts-jest": "^26.4.4",
     "typescript": "^4.1.3"
   },
   "dependencies": {
