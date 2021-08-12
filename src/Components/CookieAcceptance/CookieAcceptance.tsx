@@ -162,7 +162,7 @@ const CookieAcceptance = ({
   return (
     <>
       <AnimatePresence>
-        {visible ? (
+        {visible && (
           <motion.div
             animate={animate}
             exit={exit}
@@ -171,15 +171,6 @@ const CookieAcceptance = ({
           >
             {expanded ? expandedContent : initialContent}
           </motion.div>
-        ) : (
-          <p
-            onClick={() => {
-              setVisible(true);
-              setExpanded(true);
-            }}
-          >
-            Cookie Settings
-          </p>
         )}
       </AnimatePresence>
     </>
