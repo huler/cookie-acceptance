@@ -9,7 +9,7 @@ export const storeCookies = (cookies: CookieTypes[], agreedCookies: CookieTypes[
             localStorage.removeItem(`${appName}_${cookie}`);
         }
     });
-    localStorage.setItem('ReactCookieAcceptance_hasSetCookies', 'true');
+    localStorage.setItem(`${appName}_ReactCookieAcceptance_hasSetCookies`, 'true');
 
     if (callback) callback(agreedCookies);
 }

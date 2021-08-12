@@ -74,7 +74,8 @@ const CookieAcceptance = ({
 
   useEffect(() => {
     if (
-      localStorage.getItem("ReactCookieAcceptance_hasSetCookies") !== "true"
+      localStorage.getItem(`${appName}_ReactCookieAcceptance_hasSetCookies`) !==
+      "true"
     ) {
       setVisible(true);
     }
