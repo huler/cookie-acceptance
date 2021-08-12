@@ -54,7 +54,7 @@ You should now be able to install the package via
 ## Get Started
 
 
-```swift
+```jsx
 import { CookieAcceptance } from "@myclevergroup/cookie-acceptance";
 
 <CookieAcceptance
