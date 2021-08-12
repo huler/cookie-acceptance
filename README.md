@@ -20,7 +20,7 @@ We use GitHub packages to host this project, you’ll need to authenticate via a
 
 You’ll first need to authenticate your local NPM into Github Packages Registry.
 
-In MacOS Catalina 10.15.5 the `.npmrc` file path can be found at
+In MacOS the `.npmrc` file path can be found at
 
 ```javascript
 /Users/<user-name>/.npmrc
