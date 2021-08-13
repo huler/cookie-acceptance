@@ -57,13 +57,27 @@ You should now be able to install the package via
 ```jsx
 import { CookieAcceptance } from "@myclevergroup/cookie-acceptance";
 
+// This function can do whatever you want with the users consent
+const injectScript = (cookie) => {
+  switch (cookie) {
+    case "performance":
+      // Inject performance tracking script
+      break;
+    case "functional":
+      // Inject functional tracking script
+      break;
+    default:
+      break;
+  }
+};
+
 <CookieAcceptance
   image="https://i.giphy.com/media/HGe4zsOVo7Jvy/giphy.webp"
-  smallText="By clicking Accept All Cookies, you agree to the storing of cookies on your device."
-  largeText="Visiting websites may store or retrieve information on your browser, mostly in the form of cookies. This data might be about you, your preferences or your device."
+  smallText="By clicking accept, you agree to cookies"
+  largeText="Visiting websites may store or retrieve information on your browser."
   cookies={["performance", "functional"]}
   appName="Huler"
-  onAccept={() => onAccept()}
+  injectScript={(cookie) => injectScript(cookie)}
   privacyPolicyURL="https://huler.io/privacy"
 />
 ```
@@ -84,11 +98,7 @@ import { CookieAcceptance } from "@myclevergroup/cookie-acceptance";
 ## Accessing Cookies
 
 
-Once the user has confirmed their choices, the callback provided will return an array of agreed cookies. As well as this, the package will store relevant agreed cookies within the users localStorage. The stored items will be named:
-
-`appName_cookie_type` with the value being the cookie type, for example:
-
-`huler_performance` 
+Once the user has confirmed their choices, the package will execute injectScript for each cookie type the user has accepted, passing the type as a parameter. From there you can do whatevever you need to with the user's consent.
 
 On acceptance, a futher local storage item will also be stored called:
 
