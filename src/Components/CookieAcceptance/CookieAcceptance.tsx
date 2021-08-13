@@ -18,6 +18,7 @@ const CookieAcceptance = ({
   injectScript,
   cookies,
   appName,
+  settings,
 }: CookieAcceptanceProps) => {
   const {
     visible,
@@ -75,7 +76,8 @@ const CookieAcceptance = ({
   useEffect(() => {
     if (
       localStorage.getItem(`${appName}_ReactCookieAcceptance_hasSetCookies`) ===
-      "true"
+        "true" &&
+      !settings
     ) {
       const agreed = [];
       cookies &&
@@ -88,6 +90,9 @@ const CookieAcceptance = ({
       handleSetAgreeCookies(agreed, injectScript);
     } else {
       setVisible(true);
+    }
+    if (settings) {
+      setExpanded(true);
     }
   }, []);
 
