@@ -11,4 +11,5 @@ export interface CookieAcceptanceProps {
     appName: string;
     className: string;
     toggleCookiePopup: () => void;
+    settings: boolean;
 }
