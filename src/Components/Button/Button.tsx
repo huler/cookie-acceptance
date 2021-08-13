@@ -34,6 +34,9 @@ const Button = styled(ButtonComponent)`
     Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
   margin-right: 10px;
+  @media screen and (max-width: 500px) {
+    padding: 8px 18px;
+  }
 `;
 
 export default Button;

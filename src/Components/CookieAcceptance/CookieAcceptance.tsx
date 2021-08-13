@@ -187,7 +187,6 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
   background: #fff;
   box-shadow: 0px 3px 6px #00000029;
   width: 400px;
-  min-height: 400px;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -206,6 +205,13 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
   overflow-x: hidden;
   // Ensure cookie modal sits above all other elements
   z-index: 9999999999;
+  @media screen and (max-width: 500px) {
+    width: 95%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 10px;
+  }
   &.expanded {
     height: 70%;
   }
