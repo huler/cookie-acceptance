@@ -94,7 +94,7 @@ const CookieAcceptance = ({
     if (settings) {
       setExpanded(true);
     }
-  }, []);
+  }, [settings]);
 
   const handleCloseSettings = () => {
     if (
