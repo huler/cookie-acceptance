@@ -94,6 +94,7 @@ const injectScript = (cookie) => {
 | appName          | `String`            | Required. Gets prepended to you cookie types when stored in localStorage.                                                   |
 | injectScript     | `function`          | Required - Runs for each cookie type that is accepted by the user, passes through the cookie type as a parameter            |
 | privacyPolicyURL | `String`            | Required. Displays a link to your privacy policy                                                                            |
+| settings         | `boolean`           | Show or hide the cookie preferences modal. Useful for allowing users to re-choose their preferences                         |
 
 ## Accessing Cookies
 
@@ -109,6 +110,4 @@ This is so that we know if the user has already agreed or set their cookie prefe
 ## Showing the Popup again
 
 
-To show the popup again, you'll need to delete `appName_reactCookieAcceptance_hasSetCookies`
-
-from localStorage.
+To show the pop up again, pass `true` through to the `settings` props. This will trigger the modal to open again.
