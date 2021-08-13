@@ -78,7 +78,7 @@ import { CookieAcceptance } from "@myclevergroup/cookie-acceptance";
 | largeText        | `String`            | Text that displays on the expanded cookie preferences.                                                                      |
 | cookies          | `array` of `string` | Required. Pass the types of cookies want to get the users consent for - choose from 'performance', 'functional', 'tracking' |
 | appName          | `String`            | Required. Gets prepended to you cookie types when stored in localStorage.                                                   |
-| onAccept         | `String`            | Required. Callback when the users confirm their choices - returns an array of accepted cookies                              |
+| injectScript     | `function`          | Required - Runs for each cookie type that is accepted by the user, passes through the cookie type as a parameter            |
 | privacyPolicyURL | `String`            | Required. Displays a link to your privacy policy                                                                            |
 
 ## Accessing Cookies
