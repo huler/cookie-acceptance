@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ModalInner = styled.div`
   padding: 30px;
+  min-height: 100%;
 `;
 export const ModalImg = styled.img`
   width: 100%;

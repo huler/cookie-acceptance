@@ -207,8 +207,13 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
   // Ensure cookie modal sits above all other elements
   z-index: 9999999999;
   &.expanded {
-    height: calc(100% - 60px);
-    top: 30px;
+    height: 70%;
+  }
+  h2 {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: block;
   }
   p {
     font-size: 14px;
