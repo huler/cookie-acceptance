@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { storeCookies } from "../../Helpers/Utils";
+import { storeCookies, injectAgreedCookies } from "../../Helpers/Utils";
 import Button from "../Button";
 import Type from "../Type";
 import { BaseContext } from "../../Context/BaseContext";
@@ -15,7 +15,7 @@ const CookieAcceptance = ({
   largeText,
   privacyPolicyURL,
   image,
-  onAccept,
+  injectScript,
   cookies,
   appName,
 }: CookieAcceptanceProps) => {
@@ -25,7 +25,7 @@ const CookieAcceptance = ({
     agreedCookies,
     setVisible,
     setExpanded,
-    setAgreedCookies,
+    handleSetAgreeCookies,
   } = useContext(BaseContext);
 
   // Framer Motion animation data
@@ -54,41 +54,41 @@ const CookieAcceptance = ({
     agreement: boolean
   ) => {
     if (agreement) {
-      setAgreedCookies([...agreedCookies, cookie]);
+      handleSetAgreeCookies([...agreedCookies, cookie]);
     } else {
-      setAgreedCookies(agreedCookies.filter((item) => item !== cookie));
+      handleSetAgreeCookies(agreedCookies.filter((item) => item !== cookie));
     }
   };
 
   const handleConfirm = (all?: boolean) => {
     // Agree to all cookies provided
     if (all) {
-      setAgreedCookies(cookies);
-      storeCookies(cookies, cookies, appName, onAccept);
+      handleSetAgreeCookies(cookies, injectScript);
+      storeCookies(cookies, cookies, appName);
     } else {
       // Agree to specific cookies
-      storeCookies(cookies, agreedCookies, appName, onAccept);
+      storeCookies(cookies, agreedCookies, appName);
     }
     setVisible(false);
   };
 
   useEffect(() => {
     if (
-      localStorage.getItem(`${appName}_ReactCookieAcceptance_hasSetCookies`) !==
+      localStorage.getItem(`${appName}_ReactCookieAcceptance_hasSetCookies`) ===
       "true"
     ) {
+      const agreed = [];
+      cookies &&
+        cookies.map((cookie) => {
+          const storedCookie = localStorage.getItem(`${appName}_${cookie}`);
+          if (storedCookie) {
+            agreed.push(cookie);
+          }
+        });
+      handleSetAgreeCookies(agreed, injectScript);
+    } else {
       setVisible(true);
     }
-    const agreed = [];
-    cookies &&
-      cookies.map((cookie) => {
-        const storedCookie = localStorage.getItem(`${appName}_${cookie}`);
-        console.log(storedCookie);
-        if (storedCookie) {
-          agreed.push(cookie);
-        }
-      });
-    setAgreedCookies(agreed);
   }, []);
 
   const handleCloseSettings = () => {
@@ -198,6 +198,8 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
   max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  // Ensure cookie modal sits above all other elements
+  z-index: 9999999999;
   &.expanded {
     height: calc(100% - 60px);
     top: 30px;
