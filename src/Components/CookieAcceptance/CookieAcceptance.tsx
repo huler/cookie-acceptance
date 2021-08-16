@@ -19,6 +19,7 @@ const CookieAcceptance = ({
   cookies,
   appName,
   settings,
+  onConfirm,
 }: CookieAcceptanceProps) => {
   const {
     visible,
@@ -68,9 +69,11 @@ const CookieAcceptance = ({
       storeCookies(cookies, cookies, appName);
     } else {
       // Agree to specific cookies
+      handleSetAgreeCookies(agreedCookies, injectScript);
       storeCookies(cookies, agreedCookies, appName);
     }
     setVisible(false);
+    onConfirm();
   };
 
   useEffect(() => {
@@ -226,6 +229,7 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
     line-height: 20px;
     color: #363b40;
     margin-bottom: 40px;
+    text-align: left;
     a {
       display: inline-block;
       width: 100%;

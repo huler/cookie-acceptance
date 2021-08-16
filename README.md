@@ -95,6 +95,7 @@ const injectScript = (cookie) => {
 | injectScript     | `function`          | Required - Runs for each cookie type that is accepted by the user, passes through the cookie type as a parameter            |
 | privacyPolicyURL | `String`            | Required. Displays a link to your privacy policy                                                                            |
 | settings         | `boolean`           | Show or hide the cookie preferences modal. Useful for allowing users to re-choose their preferences                         |
+| onConfirm        | `function`          | Pass an additional function that will run when the user confirms their choices                                              |
 
 ## Accessing Cookies
 

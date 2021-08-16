@@ -110,6 +110,7 @@ const Type = styled(TypeComponent)`
       height: 32px;
       display: flex;
       align-items: center;
+      width: auto !important;
     }
   }
   p {

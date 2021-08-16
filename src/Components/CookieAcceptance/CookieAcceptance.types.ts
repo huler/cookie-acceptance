@@ -7,6 +7,7 @@ export interface CookieAcceptanceProps {
     privacyPolicyURL: string;
     image?: string;
     injectScript: () => void;
+    onConfirm: () => void;
     cookies: Array<CookieTypes>;
     appName: string;
     className: string;
