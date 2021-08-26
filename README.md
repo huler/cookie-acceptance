@@ -5,47 +5,7 @@ MCG’s Cookie Acceptance and preferences popup. Pass which cookies you store, a
 
 ## Installation
 
-### Authenticate
-
-
-We use GitHub packages to host this project, you’ll need to authenticate via a GitHub token:
-
-
-1. Go to your [Github Token Settings](https://github.com/settings/tokens)
-2. Click ‘Generate new token’
-3. Allow `write:packages` `read:packages` and `delete:packages`
-
-### Edit your `.npmrc` file
-
-
-You’ll first need to authenticate your local NPM into Github Packages Registry.
-
-In MacOS the `.npmrc` file path can be found at
-
-```javascript
-/Users/<user-name>/.npmrc
-```
-
-
-Edit the file, and paste:
-
-```other
-registry=https://registry.npmjs.org/
-@myclevergroup:registry=https://npm.pkg.github.com/
-//npm.pkg.github.com/:_authToken=your_token
-```
-
-
-The first line is the default NPM package registry, from where you will still be downloading public packages.
-
-The second line tells NPM to get packages from the organization `@myclevergroup` from the Github Registry instead of the default NPM Registry. This way when we create a package with a name such as `@myclevergroup/package`, NPM will download it from `https://npm.pkg.github.com/` which is the Github Packages Registry URL.
-
-The third line is for authentication purposes. Here you should change the *your_token* with the Github Token you have generated with the proper scopes.
-
-### Install
-
-
-You should now be able to install the package via
+You can install the package via
 
  `yarn add @myclevergroup/cookie-acceptance`
 
