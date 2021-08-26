@@ -9,7 +9,12 @@ const ToggleComponent = ({
   cookie,
 }: ToggleProps) => {
   return (
-    <div className={className}>
+    <div
+      className={className}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
       <input
         id={cookie}
         type="checkbox"
