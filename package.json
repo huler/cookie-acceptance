@@ -1,14 +1,11 @@
 {
   "name": "@myclevergroup/cookie-acceptance",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
     "build"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "types": "build/index.d.ts",
   "description": "Show a cookie accept bar, and provide user's with control over which cookies you store.",
   "scripts": {
@@ -29,7 +26,7 @@
     "Typescript"
   ],
   "author": "MyCleverGroup",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/MyCleverGroup/cookie-acceptance/issues"
   },

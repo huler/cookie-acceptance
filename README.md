@@ -76,9 +76,9 @@ const injectScript = (cookie) => {
   smallText="By clicking accept, you agree to cookies"
   largeText="Visiting websites may store or retrieve information on your browser."
   cookies={["performance", "functional"]}
-  appName="Huler"
+  appName="Company"
   injectScript={(cookie) => injectScript(cookie)}
-  privacyPolicyURL="https://huler.io/privacy"
+  privacyPolicyURL="https://company.io/privacy"
 />
 ```
 
