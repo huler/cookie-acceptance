@@ -6,6 +6,7 @@
   "files": [
     "build"
   ],
+  "private": false,
   "types": "build/index.d.ts",
   "description": "Show a cookie accept bar, and provide user's with control over which cookies you store.",
   "scripts": {
