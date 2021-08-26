@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { storeCookies, injectAgreedCookies } from "../../Helpers/Utils";
+import { storeCookies } from "../../Helpers/Utils";
 import Button from "../Button";
 import Type from "../Type";
 import { BaseContext } from "../../Context/BaseContext";
@@ -150,7 +150,11 @@ const CookieAcceptance = ({
       </p>
       {cookies &&
         cookies.map((cookie, index) => (
-          <Type cookie={cookie} onToggle={handleSingleCookieConsent} />
+          <Type
+            cookie={cookie}
+            onToggle={handleSingleCookieConsent}
+            key={cookie}
+          />
         ))}
       <Type />
       <ExpandedActions>
