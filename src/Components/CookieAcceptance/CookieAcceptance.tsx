@@ -220,7 +220,7 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
     bottom: 10px;
   }
   &.expanded {
-		max-height: 70%;
+    max-height: 70%;
   }
   h2 {
     font-size: 21px;
