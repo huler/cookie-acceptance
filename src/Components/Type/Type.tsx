@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { CookieTypes } from "../../Helpers/Types";
 import { BaseContext } from "../../Context/BaseContext";
 import Toggle from "../Toggle";
+import Dropdown from "../Dropdown";
 import { TypeProps } from "./Type.types";
 
 const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
@@ -61,11 +62,17 @@ const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
       <h4 onClick={() => setExpanded(!expanded)}>
         {cookie ? `${cookie} Cookies` : "Strictly Necessary Cookies"}
         {cookie ? (
-          <Toggle
-            onToggle={onToggle}
-            cookie={cookie}
-            checked={agreedCookies.includes(cookie)}
-          />
+          <div>
+            <Toggle
+              onToggle={onToggle}
+              cookie={cookie}
+              checked={agreedCookies.includes(cookie)}
+            />
+            <Dropdown
+              onClick={() => setExpanded(!expanded)}
+              open={expanded}
+            />
+          </div>
         ) : (
           <small>Always On</small>
         )}
@@ -111,6 +118,13 @@ const Type = styled(TypeComponent)`
       display: flex;
       align-items: center;
       width: auto !important;
+    }
+    > div {
+      display: flex;
+
+      > * + * {
+        margin-left: 10px;
+      }
     }
   }
   p {
