@@ -9,6 +9,11 @@ import { CookieTypes } from "../../Helpers/Types";
 import { ModalInner, ModalImg, ExpandedActions } from "./Styled";
 import { CookieAcceptanceProps } from "./CookieAcceptance.types";
 
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+`;
+
 const CookieAcceptance = ({
   className,
   smallText,
@@ -128,16 +133,18 @@ const CookieAcceptance = ({
         <p>
           {smallText || "Please accept our cookie policy"} {privacyPolicyLink}
         </p>
-        <Button
-          type="primary"
-          click={() => handleConfirm(true)}
-          text="Accept All Cookies"
-        />
-        <Button
-          type="secondary"
-          click={() => setExpanded(true)}
-          text="Cookie Settings"
-        />
+        <ButtonContainer>
+          <Button
+            type="primary"
+            click={() => handleConfirm(true)}
+            text="Accept All Cookies"
+          />
+          <Button
+            type="secondary"
+            click={() => setExpanded(true)}
+            text="Cookie Settings"
+          />
+        </ButtonContainer>
       </ModalInner>
     </>
   );
@@ -158,16 +165,18 @@ const CookieAcceptance = ({
         ))}
       <Type />
       <ExpandedActions>
-        <Button
-          type="primary"
-          click={() => handleConfirm()}
-          text="Confirm Choices"
-        />
-        <Button
-          type="secondary"
-          click={() => handleCloseSettings()}
-          text="Close"
-        />
+        <ButtonContainer>
+          <Button
+            type="primary"
+            click={() => handleConfirm()}
+            text="Confirm Choices"
+          />
+          <Button
+            type="secondary"
+            click={() => handleCloseSettings()}
+            text="Close"
+          />
+        </ButtonContainer>
       </ExpandedActions>
     </ModalInner>
   );

@@ -30,9 +30,7 @@ const Button = styled(ButtonComponent)`
   font-size: 13px;
   padding: 10px 25px;
   line-height: 20px;
-  font-family: "Sofia Pro", "SF Pro Text", -apple-system, BlinkMacSystemFont,
-    Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: inherit;
   margin-right: 10px;
   @media screen and (max-width: 500px) {
     padding: 8px 18px;
