@@ -199,9 +199,7 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
   right: 30px;
   overflow: hidden;
   border-radius: 10px;
-  font-family: "Sofia Pro", "SF Pro Text", -apple-system, BlinkMacSystemFont,
-    Roboto, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: inherit;
   font-size: 14px;
   line-height: 20px;
   color: #363b40;
