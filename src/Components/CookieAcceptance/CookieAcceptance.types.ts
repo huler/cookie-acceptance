@@ -8,6 +8,7 @@ export interface CookieAcceptanceProps {
     image?: string;
     injectScript: () => void;
     onConfirm: () => void;
+    onClose: () => void;
     cookies: Array<CookieTypes>;
     appName: string;
     className: string;
