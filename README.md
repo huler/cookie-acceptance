@@ -1,5 +1,5 @@
 # Cookie Acceptance
-MCG’s Cookie Acceptance and preferences popup. Pass which cookies you store, and the package will request the user’s consent, returning which of the provided cookie types they agree to. 
+Huler's Cookie Acceptance and preferences popup. Pass which cookies you store, and the package will request the user’s consent, returning which of the provided cookie types they agree to. 
 
 ## Installation
 You can install the package via
