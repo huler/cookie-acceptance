@@ -4,13 +4,13 @@ Huler's Cookie Acceptance and preferences popup. Pass which cookies you store, a
 ## Installation
 You can install the package via
 
- `yarn add @myclevergroup/cookie-acceptance`
+ `yarn add @huler/cookie-acceptance`
 
- `npm install @myclevergroup/cookie-acceptance`
+ `npm install @huler/cookie-acceptance`
 
 ## Get Started
 ```jsx
-import { CookieAcceptance } from "@myclevergroup/cookie-acceptance";
+import { CookieAcceptance } from "@huler/cookie-acceptance";
 
 // This function can do whatever you want with the users consent
 const injectScript = (cookie) => {
