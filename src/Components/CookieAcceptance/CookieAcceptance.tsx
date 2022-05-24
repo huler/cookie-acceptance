@@ -115,8 +115,9 @@ const CookieAcceptance = ({
       onClose();
     } else {
       setExpanded(false);
-      onClose();
     }
+    setVisible(false);
+    onClose();
   };
 
   const privacyPolicyLink = (
