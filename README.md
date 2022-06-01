@@ -62,3 +62,33 @@ This is so that we know if the user has already agreed or set their cookie prefe
 
 ## Showing the Popup again
 To show the pop up again, pass `true` through to the `settings` props. This will trigger the modal to open again.
+
+---
+
+## Dev Setup for editing package locally
+
+Clone the repo
+
+`git clone https://github.com/huler/cookie-acceptance.git`
+
+Create yarn links in repo
+
+```
+cd cookie-acceptance
+yarn
+yarn link
+cd node_modules/react
+yarn link
+cd ../react-dom
+yarn link
+```
+
+Go to project I need to link to
+
+```
+cd my/testing/project
+yarn add @huler/cookie-acceptance
+yarn link "@huler/cookie-acceptance"
+yarn link "react"
+yarn link "react-dom"
+```
