@@ -7,7 +7,13 @@ import Toggle from "../Toggle";
 import Dropdown from "../Dropdown";
 import { TypeProps } from "./Type.types";
 
-const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
+const TypeComponent = ({
+  cookie,
+  className,
+  onToggle,
+  necessaryCookiesText,
+  alwaysOnText,
+}: TypeProps) => {
   const { agreedCookies } = useContext(BaseContext);
   const [expanded, setExpanded] = useState(false);
 
@@ -60,7 +66,9 @@ const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
   return (
     <div className={className}>
       <h4 onClick={() => setExpanded(!expanded)}>
-        {cookie ? `${cookie} Cookies` : "Strictly Necessary Cookies"}
+        {cookie
+          ? `${cookie} Cookies`
+          : necessaryCookiesText || "Strictly Necessary Cookies"}
         {cookie ? (
           <div>
             <Toggle
@@ -68,13 +76,10 @@ const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
               cookie={cookie}
               checked={agreedCookies.includes(cookie)}
             />
-            <Dropdown
-              onClick={() => setExpanded(!expanded)}
-              open={expanded}
-            />
+            <Dropdown onClick={() => setExpanded(!expanded)} open={expanded} />
           </div>
         ) : (
-          <small>Always On</small>
+          <small>{alwaysOnText || "Always On"}</small>
         )}
       </h4>
       <AnimatePresence>
