@@ -25,7 +25,7 @@ const CookieAcceptance = ({
   appName,
   settings,
   onConfirm,
-  onClose
+  onClose,
 }: CookieAcceptanceProps) => {
   const {
     visible,
@@ -238,6 +238,7 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
     font-weight: bold;
     margin-bottom: 20px;
     display: block;
+    color: #363b40;
   }
   p {
     font-size: 14px;

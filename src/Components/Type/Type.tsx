@@ -68,10 +68,7 @@ const TypeComponent = ({ cookie, className, onToggle }: TypeProps) => {
               cookie={cookie}
               checked={agreedCookies.includes(cookie)}
             />
-            <Dropdown
-              onClick={() => setExpanded(!expanded)}
-              open={expanded}
-            />
+            <Dropdown onClick={() => setExpanded(!expanded)} open={expanded} />
           </div>
         ) : (
           <small>Always On</small>
@@ -108,6 +105,7 @@ const Type = styled(TypeComponent)`
     font-weight: bold;
     margin: 18px 0;
     cursor: pointer;
+    color: #363b40;
     small {
       font-size: 10px;
       text-transform: uppercase;
