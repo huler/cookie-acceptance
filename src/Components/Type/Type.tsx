@@ -113,6 +113,7 @@ const Type = styled(TypeComponent)`
     font-weight: bold;
     margin: 18px 0;
     cursor: pointer;
+    color: #363b40;
     small {
       font-size: 10px;
       text-transform: uppercase;

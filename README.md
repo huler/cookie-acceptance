@@ -1,16 +1,16 @@
 # Cookie Acceptance
-MCG’s Cookie Acceptance and preferences popup. Pass which cookies you store, and the package will request the user’s consent, returning which of the provided cookie types they agree to. 
+Huler's Cookie Acceptance and preferences popup. Pass which cookies you store, and the package will request the user’s consent, returning which of the provided cookie types they agree to. 
 
 ## Installation
 You can install the package via
 
- `yarn add @myclevergroup/cookie-acceptance`
+ `yarn add @huler/cookie-acceptance`
 
- `npm install @myclevergroup/cookie-acceptance`
+ `npm install @huler/cookie-acceptance`
 
 ## Get Started
 ```jsx
-import { CookieAcceptance } from "@myclevergroup/cookie-acceptance";
+import { CookieAcceptance } from "@huler/cookie-acceptance";
 
 // This function can do whatever you want with the users consent
 const injectScript = (cookie) => {
@@ -62,3 +62,33 @@ This is so that we know if the user has already agreed or set their cookie prefe
 
 ## Showing the Popup again
 To show the pop up again, pass `true` through to the `settings` props. This will trigger the modal to open again.
+
+---
+
+## Dev Setup for editing package locally
+
+Clone the repo
+
+`git clone https://github.com/huler/cookie-acceptance.git`
+
+Create yarn links in repo
+
+```
+cd cookie-acceptance
+yarn
+yarn link
+cd node_modules/react
+yarn link
+cd ../react-dom
+yarn link
+```
+
+Go to project I need to link to
+
+```
+cd my/testing/project
+yarn add @huler/cookie-acceptance
+yarn link "@huler/cookie-acceptance"
+yarn link "react"
+yarn link "react-dom"
+```

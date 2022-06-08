@@ -31,6 +31,7 @@ const CookieAcceptance = ({
   appName,
   settings,
   onConfirm,
+  onClose,
 }: CookieAcceptanceProps) => {
   const {
     visible,
@@ -117,9 +118,12 @@ const CookieAcceptance = ({
     ) {
       setVisible(false);
       setExpanded(false);
+      onClose();
     } else {
       setExpanded(false);
     }
+    setVisible(false);
+    onClose();
   };
 
   const privacyPolicyLink = (
@@ -240,6 +244,7 @@ const StyledCookieAcceptance = styled(CookieAcceptance)`
     font-weight: bold;
     margin-bottom: 20px;
     display: block;
+    color: #363b40;
   }
   p {
     font-size: 14px;
