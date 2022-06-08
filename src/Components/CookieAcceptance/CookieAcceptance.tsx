@@ -32,6 +32,8 @@ const CookieAcceptance = ({
   settings,
   onConfirm,
   onClose,
+  necessaryCookiesText,
+  alwaysOnText,
 }: CookieAcceptanceProps) => {
   const {
     visible,
@@ -171,6 +173,8 @@ const CookieAcceptance = ({
             cookie={cookie}
             onToggle={handleSingleCookieConsent}
             key={cookie}
+            necessaryCookiesText={necessaryCookiesText}
+            alwaysOnText={alwaysOnText}
           />
         ))}
       <Type />

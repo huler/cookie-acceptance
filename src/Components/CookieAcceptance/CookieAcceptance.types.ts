@@ -19,4 +19,6 @@ export interface CookieAcceptanceProps {
   className: string;
   toggleCookiePopup: () => void;
   settings: boolean;
+  necessaryCookiesText: string;
+  alwaysOnText: string;
 }
