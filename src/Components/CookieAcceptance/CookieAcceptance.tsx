@@ -24,6 +24,8 @@ const CookieAcceptance = ({
   privacyText,
   confirmText,
   closeText,
+  necessaryCookiesText,
+  alwaysOnText,
   privacyPolicyURL,
   image,
   injectScript,
@@ -32,8 +34,6 @@ const CookieAcceptance = ({
   settings,
   onConfirm,
   onClose,
-  necessaryCookiesText,
-  alwaysOnText,
 }: CookieAcceptanceProps) => {
   const {
     visible,
