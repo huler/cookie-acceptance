@@ -177,7 +177,10 @@ const CookieAcceptance = ({
             alwaysOnText={alwaysOnText}
           />
         ))}
-      <Type />
+      <Type
+        necessaryCookiesText={necessaryCookiesText}
+        alwaysOnText={alwaysOnText}
+      />
       <ExpandedActions>
         <ButtonContainer>
           <Button
