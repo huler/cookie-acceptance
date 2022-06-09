@@ -18,6 +18,14 @@ const CookieAcceptance = ({
   className,
   smallText,
   largeText,
+  moreInfoText,
+  acceptButtonText,
+  settingsButtonText,
+  privacyText,
+  confirmText,
+  closeText,
+  necessaryCookiesText,
+  alwaysOnText,
   privacyPolicyURL,
   image,
   injectScript,
@@ -124,7 +132,7 @@ const CookieAcceptance = ({
     <>
       {privacyPolicyURL && (
         <a href={privacyPolicyURL} target="_blank" rel="noreferrer">
-          More Info
+          {moreInfoText || "More Info"}
         </a>
       )}
     </>
@@ -141,12 +149,12 @@ const CookieAcceptance = ({
           <Button
             type="primary"
             click={() => handleConfirm(true)}
-            text="Accept All Cookies"
+            text={acceptButtonText || "Accept All Cookies"}
           />
           <Button
             type="secondary"
             click={() => setExpanded(true)}
-            text="Cookie Settings"
+            text={settingsButtonText || "Cookie Settings"}
           />
         </ButtonContainer>
       </ModalInner>
@@ -155,7 +163,7 @@ const CookieAcceptance = ({
 
   const expandedContent = (
     <ModalInner>
-      <h2>Privacy Settings</h2>
+      <h2>{privacyText || "Privacy Settings"}</h2>
       <p>
         {largeText || "Please accept our cookie policy"} {privacyPolicyLink}
       </p>
@@ -165,20 +173,25 @@ const CookieAcceptance = ({
             cookie={cookie}
             onToggle={handleSingleCookieConsent}
             key={cookie}
+            necessaryCookiesText={necessaryCookiesText}
+            alwaysOnText={alwaysOnText}
           />
         ))}
-      <Type />
+      <Type
+        necessaryCookiesText={necessaryCookiesText}
+        alwaysOnText={alwaysOnText}
+      />
       <ExpandedActions>
         <ButtonContainer>
           <Button
             type="primary"
             click={() => handleConfirm()}
-            text="Confirm Choices"
+            text={confirmText || "Confirm Choices"}
           />
           <Button
             type="secondary"
             click={() => handleCloseSettings()}
-            text="Close"
+            text={closeText || "Close"}
           />
         </ButtonContainer>
       </ExpandedActions>
