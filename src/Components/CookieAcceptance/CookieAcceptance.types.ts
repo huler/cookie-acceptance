@@ -9,6 +9,8 @@ export interface CookieAcceptanceProps {
   privacyText: string;
   confirmText: string;
   closeText: string;
+  necessaryCookiesText: string;
+  alwaysOnText: string;
   privacyPolicyURL: string;
   image?: string;
   injectScript: () => void;
@@ -19,6 +21,4 @@ export interface CookieAcceptanceProps {
   className: string;
   toggleCookiePopup: () => void;
   settings: boolean;
-  necessaryCookiesText: string;
-  alwaysOnText: string;
 }
