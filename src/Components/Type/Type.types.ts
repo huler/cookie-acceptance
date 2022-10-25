@@ -1,6 +1,8 @@
-import { CookieTypes } from '../../Helpers/Types';
+import { CookieTypes } from "../../Helpers/Types";
 export interface TypeProps {
-    cookie: CookieTypes;
-    className?: string;
-    onToggle: (cookie: CookieTypes, agreement: boolean) => void;
+  cookie: CookieTypes;
+  className?: string;
+  onToggle: (cookie: CookieTypes, agreement: boolean) => void;
+  necessaryCookiesText?: string;
+  alwaysOnText?: string;
 }
