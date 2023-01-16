@@ -1,6 +1,6 @@
 {
   "name": "@huler/cookie-acceptance",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "main": "build/index.js",
   "module": "build/index.esm.js",
   "files": [
@@ -36,8 +36,8 @@
   },
   "homepage": "https://github.com/huler/cookie-acceptance",
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
@@ -50,15 +50,15 @@
     "babel-preset-react-app": "^10.0.0",
     "identity-obj-proxy": "^3.0.0",
     "node-sass": "^7.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "rollup": "^2.36.1",
     "rollup-plugin-peer-deps-external": "^2.2.0",
     "rollup-plugin-typescript2": "^0.29.0",
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "framer-motion": "^4.1.17",
+    "framer-motion": "^8.2.4",
     "styled-components": "^5.3.0"
   }
 }
